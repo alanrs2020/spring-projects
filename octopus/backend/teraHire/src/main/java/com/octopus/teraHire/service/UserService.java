@@ -35,12 +35,11 @@ public class UserService implements UserInterface{
         return userRepository.existsByEmail(emailId);
     }
 
-    private LocalDateTime getDate(){
+    public LocalDateTime getDate(){
         //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return now;
     }
-
     private String encryptPassword(String password){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder.encode(password);

@@ -49,16 +49,13 @@ public class UserController {
     }
 
     @DeleteMapping (value="delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteUser(@PathVariable long id){
         userService.deleteUserById(id);
         return "Deleted user with id:"+ id;
     }
 
-    @PostMapping("/login")
-    public UserDetails login(@RequestBody AuthUser userDetails){
-        System.out.println(userDetails);
-        return userDetailsService.loadUserByUsername(userDetails.getUsername());
-    }
+
 
 
 }
